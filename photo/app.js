@@ -26,6 +26,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  console.log("Middleware executed for every request to the app");
+  next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 
